@@ -57,9 +57,3 @@ FROM prestamos
 JOIN miembros ON prestamos.id_miembro = miembros.id
 GROUP BY miembros.nombre;
 --Consulta para obtener los nombres de los miembros que han prestado el libro titulado 'Cien Años de Soledad':
-
-SELECT miembros.nombre
-FROM prestamos
-JOIN libros ON prestamos.id_libro = libros.id
-JOIN miembros ON prestamos.id_miembro = miembros.id
-WHERE libros.titulo = 'Cien Años de Soledad';
