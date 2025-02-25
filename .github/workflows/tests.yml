@@ -36,39 +36,94 @@ jobs:
         env:
           PGPASSWORD: postgres
 
-      - name: Test tables creation
+      - name: Test table 1 creation
         run: |
-          if [ $(grep -c "CREATE TABLE" sql_log.txt) -lt 4 ]; then
-            echo "Menos de 4 tablas creadas"
+          if [ $(grep -c "CREATE TABLE" sql_log.txt) -lt 1 ]; then
+            echo "Menos de una tabla creada"
             exit 1
           else
-            echo "La creación de tablas es de al menos 4 (OK)"
+            echo "Un punto por la creación de una tabla"
           fi          
 
-      - name: Test insertions of 5 records
+      - name: Test insertions of 3 records
         run: |
-          if [ $(grep -c "INSERT 0 5" sql_log.txt) -lt 5 ]; then
-            echo "Menos de 5 inserciones de 5 registros"
+          if [ $(grep -c "INSERT 0 3" sql_log.txt) -lt 1 ]; then
+            echo "No se encontró la inserción de 3 registros"
             exit 1
           else
-            echo "Cantidad de inserciones de 5 registros OK"
+            echo "Un punto por la inserción de tres registros"
           fi     
 
-      - name: Test insertions of 1 records
+      - name: Test index creation
         run: |
-          if [ $(grep -c "INSERT 0 1" sql_log.txt) -lt 1 ]; then
-            echo "Menos de una iserción de un registro."
+          if [ $(grep -c "CREATE INDEX" sql_log.txt) -lt 1 ]; then
+            echo "Index no creado"
             exit 1
           else
-            echo "Cantidad de inserciones de un renglón OK"
+            echo "Un punto por la creación de un índice"
+          fi
+
+      - name: Test table 2 creation
+        run: |
+          if [ $(grep -c "CREATE TABLE" sql_log.txt) -lt 2 ]; then
+            echo "Menos de dos tablas creadas"
+            exit 1
+          else
+            echo "Un punto por la creación de la segunda tabla"
+          fi                      
+
+      - name: Test insertions of 2 records
+        run: |
+          if [ $(grep -c "INSERT 0 2" sql_log.txt) -lt 1 ]; then
+            echo "Menos de una iserción de dos registros."
+            exit 1
+          else
+            echo "Un punto por la inserción de dos registros"
           fi    
           
-      - name: Test query clientes con nombre que comienza con A 
-        run: |        
-          if grep -Pzo "cliente_id \|  nombre   \|        email        \n------------\+-----------\+---------------------\n          1 \| Ana Pérez \| ana.perez@gmail.com\n\(1 row\)" sql_log.txt; then
-            echo "La selección de cliente con nombre que comienza con A está bien."
-          else
-            echo "El archivo no contiene el texto especificado."
+
+      - name: Test table 3 creation
+        run: |
+          if [ $(grep -c "CREATE TABLE" sql_log.txt) -lt 3 ]; then
+            echo "Menos de tres tablas creadas"
             exit 1
-          fi
+          else
+            echo "Un punto por la creación de la tercera tabla"
+          fi                      
+
+      - name: Test insertions of 3 records
+        run: |
+          if [ $(grep -c "INSERT 0 3" sql_log.txt) -lt 2 ]; then
+            echo "Menos de dos inserciones de dos registros."
+            exit 1
+          else
+            echo "Un punto por la inserción de dos registros por segunda vez"
+          fi    
+                    
+      - name: Test query 1
+        run: |
+          if [ $(grep -c "row" sql_log.txt) -lt 1 ]; then
+            echo "Menos de una consulta o sin renglones."
+            exit 1
+          else
+            echo "Un punto por la primera consulta"
+          fi 
                 
+      - name: Test query 2
+        run: |
+          if [ $(grep -c "row" sql_log.txt) -lt 2 ]; then
+            echo "Menos de dos consultas."
+            exit 1
+          else
+            echo "Un punto por la segunda consulta"
+          fi 
+                  
+      - name: Test query 3
+        run: |
+          if [ $(grep -c "row" sql_log.txt) -lt 3 ]; then
+            echo "Menos de tres consultas."
+            exit 1
+          else
+            echo "Un punto por la tercers consulta"
+          fi 
+                            
