@@ -1,4 +1,7 @@
 --Antonio de Jesus Morales Quiroz 176412
+--Examen primer parcial Base de datos
+
+
 -- Crear la tabla libros
 CREATE TABLE libros (
   id INT PRIMARY KEY ,
@@ -8,9 +11,9 @@ CREATE TABLE libros (
 );
 
 -- Insertar tres registros en la tabla libros
-INSERT INTO libros (id, titulo, autor, ano_publicacion) VALUES (1, 'Cien Anos de Soledad', 'Gabriel Garcia Marquez', 1990);
+INSERT INTO libros (id, titulo, autor, ano_publicacion) VALUES (1, 'Cien Años de Soledad', 'Gabriel Garcia Marquez', 1990);
 INSERT INTO libros (id, titulo, autor, ano_publicacion) VALUES (2, 'El Codigo da Vinci', 'Dan Brown', 2002);
-INSERT INTO libros (id, titulo, autor, ano_publicacion) VALUES (3, 'El senor de los anillos', 'J. R. R. Tolkien', 1980);
+INSERT INTO libros (id, titulo, autor, ano_publicacion) VALUES (3, 'El señor de los anillos', 'J. R. R. Tolkien', 1980);
 
 -- Crear un indice en el campo titulo de la tabla libros
 CREATE INDEX inx_titulo ON libros(titulo);
@@ -31,17 +34,20 @@ CREATE TABLE prestamos (
   id_libro INT,
   id_miembro INT,
   FOREIGN KEY (id_libro) REFERENCES libros(id) ON DELETE CASCADE,
-  FOREIGN KEY (id_miembro) REFERENCES miembros(id) ON DELETE CASCADE
+  FOREIGN KEY (id_miembro) REFERENCES miembros(id) ON DELETE CASCADE,
+  fecha_prestamo DATE
 );
 
 -- Insertar registros en la tabla prestamos
-INSERT INTO prestamos (id_libro, id_miembro) VALUES (1, 2);
-INSERT INTO prestamos (id_libro, id_miembro) VALUES (2, 1);
-INSERT INTO prestamos (id_libro, id_miembro) VALUES (3, 1);
+INSERT INTO prestamos  VALUES (1, 2,'2025-02-25');
+INSERT INTO prestamos  VALUES (2, 1,'2025-02-20');
+INSERT INTO prestamos  VALUES (3, 1,'2025-02-18');
 
 -- Consultas
 -- Obtener todos los registros de libros
 SELECT * FROM libros;
+-- Obtener todos los registros de prestamos
+SELECT * FROM prestamos;
 
 -- Obtener todos los registros de miembros
 SELECT * FROM miembros;
@@ -63,4 +69,4 @@ SELECT m.nombre AS miembros, l.titulo AS nombres
 FROM miembros m
 JOIN prestamos p ON m.id = p.id_miembro
 JOIN libros l ON p.id_libro = l.id 
-WHERE l.titulo = 'Cien Anos de Soledad';
+WHERE l.titulo = 'Cien Años de Soledad';
