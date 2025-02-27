@@ -11,9 +11,9 @@ CREATE TABLE libros (
 );
 
 -- Insertar tres registros en la tabla libros
-INSERT INTO libros (id, titulo, autor, ano_publicacion) VALUES (1, 'Cien Años de Soledad', 'Gabriel Garcia Marquez', 1990);
-INSERT INTO libros (id, titulo, autor, ano_publicacion) VALUES (2, 'El Codigo da Vinci', 'Dan Brown', 2002);
-INSERT INTO libros (id, titulo, autor, ano_publicacion) VALUES (3, 'El señor de los anillos', 'J. R. R. Tolkien', 1980);
+INSERT INTO libros (id, titulo, autor, ano_publicacion) VALUES (1, 'Cien Años de Soledad', 'Gabriel Garcia Marquez', 1990),
+ (2, 'El Codigo da Vinci', 'Dan Brown', 2002),
+ (3, 'El señor de los anillos', 'J. R. R. Tolkien', 1980);
 
 -- Crear un indice en el campo titulo de la tabla libros
 CREATE INDEX inx_titulo ON libros(titulo);
@@ -26,8 +26,8 @@ CREATE TABLE miembros (
 );
 
 -- Insertar dos registros en la tabla miembros
-INSERT INTO miembros (id, nombre, fecha_registro) VALUES (1, 'Antonio Morales', '2025-02-25');
-INSERT INTO miembros (id, nombre, fecha_registro) VALUES (2, 'Araujo', '2025-02-26');
+INSERT INTO miembros (id, nombre, fecha_registro) VALUES (1, 'Antonio Morales', '2025-02-25'),
+(2, 'Araujo', '2025-02-26');
 
 -- Crear la tabla prestamos
 CREATE TABLE prestamos (
@@ -39,9 +39,9 @@ CREATE TABLE prestamos (
 );
 
 -- Insertar registros en la tabla prestamos
-INSERT INTO prestamos  VALUES (1, 2,'2025-02-25');
-INSERT INTO prestamos  VALUES (2, 1,'2025-02-20');
-INSERT INTO prestamos  VALUES (3, 1,'2025-02-18');
+INSERT INTO prestamos  VALUES (1, 2,'2025-02-25'),
+ (2, 1,'2025-02-20'),
+ (3, 1,'2025-02-18');
 
 -- Consultas
 -- Obtener todos los registros de libros
