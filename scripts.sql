@@ -53,9 +53,9 @@ SELECT * FROM prestamos;
 SELECT * FROM miembros;
 
 -- Obtener los titulos de los libros y los nombres de los miembros que los han prestado
-SELECT l.titulo AS Titulos, m.nombre AS Miembros
-FROM libros l
-JOIN prestamos p ON p.id_libro = l.id
+SELECT l.titulo AS Titulo, m.nombre AS Miembro
+FROM prestamos p
+JOIN libros l ON p.id_libro = l.id
 JOIN miembros m ON p.id_miembro = m.id;
 
 -- Contar cuantos libros ha prestado cada miembro
@@ -65,8 +65,9 @@ JOIN miembros m ON m.id = p.id_miembro
 GROUP BY m.nombre;
 
 -- Obtener los miembros que han prestado el libro titulado 'Cien Anos de Soledad'
-SELECT m.nombre AS miembros, l.titulo AS nombres
-FROM miembros m
-JOIN prestamos p ON m.id = p.id_miembro
-JOIN libros l ON p.id_libro = l.id 
+SELECT m.nombre AS Miembro
+FROM prestamos p
+JOIN libros l ON p.id_libro = l.id
+JOIN miembros m ON p.id_miembro = m.id
 WHERE l.titulo = 'Cien Años de Soledad';
+
