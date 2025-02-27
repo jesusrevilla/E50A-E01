@@ -1,3 +1,5 @@
+--177847 Alfredo De Alba Sánchez
+
 --Crear la tabla libros:
 
 CREATE TABLE libros (
