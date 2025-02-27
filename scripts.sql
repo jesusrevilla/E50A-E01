@@ -49,6 +49,7 @@ CREATE TABLE prestamos(
 --Insertar registros en la tabla prestamos:
 INSERT INTO prestamos VALUES
 (1,1,'10-01-2025'),
+(2,1,'10-01-2025'),
 (3,2,'25-02-2025');
 
 --Sección 4: Consultas Avanzadas
