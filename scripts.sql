@@ -47,6 +47,7 @@ CREATE TABLE PRESTAMOS (
 --Insertar registros en la tabla prestamos:
 INSERT INTO PRESTAMOS VALUES
 (7845, 9667, '2022-05-08'),
+(1211, 9663, '2022-07-03'),
 (4512, 9663, '2022-08-19');
 
 
