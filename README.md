@@ -7,7 +7,7 @@
    `título`,   
    `autor`,   
    `año_publicación` (entero).   
-2. Inserte tres registros en la tabla `libros` uno de los libros con título:   
+2. Inserte **tres** registros en la tabla `libros` uno de los libros con título:   
    Cien Años de Soledad.   
 
 3. Cree una tabla llamada `miembros` con los siguientes campos:   
@@ -15,7 +15,7 @@
    `nombre`,   
    `fecha_registro` (fecha).   
 
-4. Inserte dos registros en la tabla `miembros`.
+4. Inserte **dos** registros en la tabla `miembros`.
 
 5. Cree una tabla llamada `prestamos` para relacionar `libros` y `miembros`,   
    con los campos:   
