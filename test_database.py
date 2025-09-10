@@ -52,3 +52,15 @@ def test_id_fields_are_serial(db_connection):
         """)
         default = cursor.fetchone()[0]
         assert default is not None and 'nextval' in default, f"Campo 'id' en tabla '{table}' no es tipo serial"
+
+
+def test_at_least_one_not_null_column(db_connection):
+    cursor = db_connection.cursor()
+    for table in ['libros', 'miembros', 'prestamos']:
+        cursor.execute(f"""
+            SELECT COUNT(*) FROM information_schema.columns
+            WHERE table_name = '{table}' AND is_nullable = 'NO';
+        """)
+        count = cursor.fetchone()[0]
+        assert count >= 1, f"La tabla '{table}' no tiene ninguna columna NOT NULL"
+
