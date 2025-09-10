@@ -26,7 +26,7 @@
 6. Agregue UNIQUE, NOT NULL a los campos que considere pertinete, que deben ser   
    únicos o que no pueden faltar.
 
-8. Inserte registros en la tabla prestamos para asignar libros a los miembros.   
+8. Inserte **tres** registros en la tabla prestamos para asignar libros a los miembros.   
 
 ## Sección 2: Índices
 
