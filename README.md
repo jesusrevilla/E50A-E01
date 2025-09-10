@@ -23,7 +23,8 @@
    id_miembro (entero, clave foránea),   
    fecha_prestamo (fecha). (1 punto)
 
-6. Agregue NOT NULL a los campos que considere pertinete, por lo menos a un campo.
+6. Agregue NOT NULL a los campos que considere pertinete,   
+   por lo menos a un campo de cada tabla.
 
 8. Inserte **tres** registros en la tabla prestamos para asignar libros a los miembros.   
 
