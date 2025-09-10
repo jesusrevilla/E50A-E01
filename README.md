@@ -21,9 +21,12 @@
    con los campos:   
    id_libro (entero, clave foránea),   
    id_miembro (entero, clave foránea),   
-   fecha_prestamo (fecha). (1 punto)   
+   fecha_prestamo (fecha). (1 punto)
 
-6. Inserte registros en la tabla prestamos para asignar libros a los miembros.   
+6. Agregue UNIQUE, NOT NULL a los campos que considere pertinete, que deben ser
+   únicos o que no pueden faltar.
+
+8. Inserte registros en la tabla prestamos para asignar libros a los miembros.   
 
 ## Sección 2: Índices
 
