@@ -25,8 +25,20 @@ jobs:
 
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v4      
+        uses: actions/checkout@v4    
 
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.X'
+
+
+      - name: Install dependencies
+        run: |
+          pip install pytest psycopg2
+          
+        
       - name: Wait for PostgreSQL to be ready
         run: until pg_isready -h localhost -p 5432; do sleep 1; done
 
@@ -117,13 +129,10 @@ jobs:
           else
             echo "Un punto por la segunda consulta."
           fi 
+
+
+      - name: Run tests
+        run: pytest test_database.py
+          
                   
-      - name: Test query 3
-        run: |
-          if [ $(grep -c "row" sql_log.txt) -lt 3 ]; then
-            echo "Menos de tres consultas."
-            exit 1
-          else
-            echo "Un punto por la tercera consulta."
-          fi 
                             
