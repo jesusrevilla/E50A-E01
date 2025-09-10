@@ -25,8 +25,20 @@ jobs:
 
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v4      
+        uses: actions/checkout@v4    
 
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.X'
+
+
+      - name: Install dependencies
+        run: |
+          pip install pytest psycopg2
+          
+        
       - name: Wait for PostgreSQL to be ready
         run: until pg_isready -h localhost -p 5432; do sleep 1; done
 
@@ -39,56 +51,56 @@ jobs:
       - name: Test table 1 creation
         run: |
           if [ $(grep -c "CREATE TABLE" sql_log.txt) -lt 1 ]; then
-            echo "Menos de una tabla creada"
+            echo "Menos de una tabla creada."
             exit 1
           else
-            echo "Un punto por la creación de una tabla"
+            echo "Un punto por la creación de una tabla."
           fi          
 
       - name: Test insertions of 3 records
         run: |
           if [ $(grep -c "INSERT 0 3" sql_log.txt) -lt 1 ]; then
-            echo "No se encontró la inserción de 3 registros"
+            echo "No se encontró la inserción de 3 registros."
             exit 1
           else
-            echo "Un punto por la inserción de tres registros"
+            echo "Un punto por la inserción de tres registros."
           fi     
 
       - name: Test index creation
         run: |
           if [ $(grep -c "CREATE INDEX" sql_log.txt) -lt 1 ]; then
-            echo "Index no creado"
+            echo "Índice no creado."
             exit 1
           else
-            echo "Un punto por la creación de un índice"
+            echo "Un punto por la creación de un índice."
           fi
 
       - name: Test table 2 creation
         run: |
           if [ $(grep -c "CREATE TABLE" sql_log.txt) -lt 2 ]; then
-            echo "Menos de dos tablas creadas"
+            echo "Menos de dos tablas creadas."
             exit 1
           else
-            echo "Un punto por la creación de la segunda tabla"
+            echo "Un punto por la creación de la segunda tabla."
           fi                      
 
       - name: Test insertions of 2 records
         run: |
           if [ $(grep -c "INSERT 0 2" sql_log.txt) -lt 1 ]; then
-            echo "Menos de una iserción de dos registros."
+            echo "Menos de una inserción de dos registros."
             exit 1
           else
-            echo "Un punto por la inserción de dos registros"
+            echo "Un punto por la inserción de dos registros."
           fi    
           
 
       - name: Test table 3 creation
         run: |
           if [ $(grep -c "CREATE TABLE" sql_log.txt) -lt 3 ]; then
-            echo "Menos de tres tablas creadas"
+            echo "Menos de tres tablas creadas."
             exit 1
           else
-            echo "Un punto por la creación de la tercera tabla"
+            echo "Un punto por la creación de la tercera tabla."
           fi                      
 
       - name: Test insertions of 3 records
@@ -97,7 +109,7 @@ jobs:
             echo "Menos de dos inserciones de dos registros."
             exit 1
           else
-            echo "Un punto por la inserción de dos registros por segunda vez"
+            echo "Un punto por la inserción de tres registros por segunda vez."
           fi    
                     
       - name: Test query 1
@@ -106,7 +118,7 @@ jobs:
             echo "Menos de una consulta o sin renglones."
             exit 1
           else
-            echo "Un punto por la primera consulta"
+            echo "Un punto por la primera consulta."
           fi 
                 
       - name: Test query 2
@@ -115,15 +127,12 @@ jobs:
             echo "Menos de dos consultas."
             exit 1
           else
-            echo "Un punto por la segunda consulta"
+            echo "Un punto por la segunda consulta."
           fi 
+
+
+      - name: Run tests
+        run: pytest test_database.py
+          
                   
-      - name: Test query 3
-        run: |
-          if [ $(grep -c "row" sql_log.txt) -lt 3 ]; then
-            echo "Menos de tres consultas."
-            exit 1
-          else
-            echo "Un punto por la tercers consulta"
-          fi 
                             
