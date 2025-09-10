@@ -106,7 +106,7 @@ jobs:
       - name: Test insertions of 3 records
         run: |
           if [ $(grep -c "INSERT 0 3" sql_log.txt) -lt 2 ]; then
-            echo "Menos de dos inserciones de dos registros."
+            echo "Menos de dos inserciones de tres registros."
             exit 1
           else
             echo "Un punto por la inserción de tres registros por segunda vez."
