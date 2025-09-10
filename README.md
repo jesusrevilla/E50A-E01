@@ -33,9 +33,9 @@
 
 Nota: cada consulta debe arrojar por lo menos un renglón
 
-8. Realice una consulta para obtener los títulos de los libros
+8. Realice una consulta para obtener los títulos de los libros   
    y los nombres de los miembros a los que los han prestado.
 
-9. Realice una consulta para obtener los nombres de los miembros
+9. Realice una consulta para obtener los nombres de los miembros   
    a los que le han prestado el libro titulado 'Cien Años de Soledad'.
 
