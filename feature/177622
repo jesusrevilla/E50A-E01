@@ -54,4 +54,3 @@ FROM prestamos p
 JOIN libros   l ON p.id_libro   = l.id
 JOIN miembros m ON p.id_miembro = m.id
 WHERE l.titulo = 'Cien Años de Soledad';
-
