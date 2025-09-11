@@ -45,3 +45,40 @@ INSERT INTO prestamos (id_libro, id_miembro, fecha_prestamo) VALUES
 (1, 1, '2024-04-01'),
 (2, 1, '2024-05-10'),
 (3, 2, '2024-06-15');
+
+
+-- Sección 2: Crear un índice en el campo 'titulo' de la tabla 'libros'
+CREATE INDEX idx_titulo_libros ON libros(titulo);
+
+
+-- Secció 4: Consultas Avanzadas
+
+-- Consulta 1 Obtener los títulos de los libros y los nombres 
+-- de los miembros a los que han sido prestados
+SELECT l.titulo, m.nombre
+FROM libros l
+JOIN prestamos p ON l.id = p.id_libro
+JOIN miembros m ON p.id_miembro = m.id;
+
+
+
+
+-- Consulta 2 Obtener los nombres de los miembros a los que se 
+-- les ha prestado el libro titulado 'Cien Años de Soledad'
+SELECT m.nombre
+FROM miembros m
+JOIN prestamos p ON m.id = p.id_miembro
+JOIN libros l ON p.id_libro = l.id
+WHERE l.titulo = 'Cien Años de Soledad';
+
+SELECT m.nombre
+FROM miembros m
+JOIN prestamos p ON m.id = p.id_miembro
+JOIN libros l ON p.id_libro = l.id
+WHERE l.titulo = 'Cien Años de Soledad';
+
+-- Insertar registros en prestamos (relacionar libros con miembros)
+INSERT INTO prestamos (id_libro, id_miembro, fecha_prestamo) VALUES
+(1, 1, '2024-04-01'),
+(2, 1, '2024-05-10'),
+(3, 2, '2024-06-15');
