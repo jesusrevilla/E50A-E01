@@ -63,7 +63,7 @@ CREATE INDEX idx_titulo ON libro(titulo);
 --Nota: cada consulta debe arrojar por lo menos un renglón
 -- Realice una consulta para obtener los títulos de los libros
 --y los nombres de los miembros a los que los han prestado.
-SELECT l.titulo, m.nombre, p.fecha_prestamo
+SELECT l.titulo, m.nombre
 FROM prestamo p
 JOIN libro l ON p.id_libro = l.id
 JOIN miembros m ON p.id_miembros = m.id;
