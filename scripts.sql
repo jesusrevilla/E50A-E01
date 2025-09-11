@@ -5,12 +5,12 @@ CREATE TABLE libros(
   anio_publicacion INT NOT NULL
 );
 
-INSERT INTO libros(titulo, autor, anio_publicacion) VALUES
-('Cien Años de Soledad','Gabriel Marquez',1976);
-INSERT INTO libros(titulo, autor, anio_publicacion) VALUES
-('1989', 'Juan Gomez',1979);
 INSERT INTO libros(titulo, autor, anio_publicacion) VALUES 
-('Habitos atomicos', 'Jonh Doe',2012);
+
+('Cien Años de Soledad','Gabriel Marquez',1976),
+
+('1989', 'Juan Gomez',1979),
+('Habitos atomicos', 'Jonh Doe',2014);
 
 --SELECT * FROM libros;
 
@@ -21,8 +21,7 @@ CREATE TABLE miembros(
 );
 
 INSERT INTO miembros (nombre, fecha_registro) VALUES
-('David Lopez','12/03/2004');
-INSERT INTO miembros (nombre, fecha_registro) VALUES
+('David Lopez','12/03/2004'),
 ('Angel Martinez','04/12/1908');
 
 --SELECT * FROM miembros;
@@ -35,14 +34,10 @@ CREATE TABLE prestamos(
   fecha_prestamo DATE NOT NULL
 );
 
-INSERT INTO prestamos(id_libro,id_miembro,fecha_prestamo) VALUES(
-1,2,'10/09/2025');
-
-INSERT INTO prestamos(id_libro,id_miembro,fecha_prestamo) VALUES(
-3,1,'10/09/2025');
-
-INSERT INTO prestamos(id_libro,id_miembro,fecha_prestamo) VALUES(
-2,1,'04/09/2025');
+INSERT INTO prestamos(id_libro,id_miembro,fecha_prestamo) VALUES
+(1,2,'10/09/2025'),
+(3,1,'10/09/2025'),
+(2,1,'04/09/2025');
 
 CREATE INDEX idx_libros on libros (titulo);
 
