@@ -10,11 +10,12 @@ INSERT INTO libros (titulo, autor,año_publicacion)VALUES
 ('LibroDos', 'AutorDos', 2005),
 ('LibroTres', 'AutorTres', 2006);
 
-
-CREATE TABLE miembros (
-  id SERIAL PRIMARY KEY,
-  nombre varchar(50) NOT NULL,
-  fecha_registro DATE NOT NULL
+CREATE TABLE prestamos (
+  id_libro int NOT NULL,
+  id_miembro int NOT NULL,
+  FOREIGN KEY (id_libro) references libros(id),
+  FOREIGN KEY (id_miembro) references miembros(id),
+  fecha_prestamo DATE NOT NULL
 );
 
 INSERT INTO miembros (nombre, fecha_registro) VALUES
