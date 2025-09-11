@@ -4,15 +4,11 @@ CREATE TABLE libros (
   autor VARCHAR(50) NOT NULL, 
   año_publicidad INTEGER NOT NULL
 );
-
 INSERT INTO libros (titulo, autor, año_publicidad) 
-VALUES ('Cien Años de Soledad', 'Gabriel Marquez', 2000); 
-
-INSERT INTO libros (titulo, autor, año_publicidad)
-VALUES ('La Cenicienta', 'Disney', 1980); 
-
-INSERT INTO libros (titulo, autor, año_publicidad)
-VALUES ('La Bella Durmiente', 'Disney', 1988); 
+VALUES 
+  ('Cien Años de Soledad', 'Gabriel Marquez', 2000), 
+  ('La Cenicienta', 'Disney', 1980), 
+  ('La Bella Durmiente', 'Disney', 1988);
 
 CREATE TABLE miembros (
   id SERIAL PRIMARY KEY,
@@ -21,10 +17,9 @@ CREATE TABLE miembros (
 );
 
 INSERT INTO miembros (nombre, fecha_registro) 
-VALUES ('Fernanda Camacho', '2024-08-19'); 
-
-INSERT INTO miembros (nombre, fecha_registro)
-VALUES ('Aarón Diaz', '2020-07-29'); 
+VALUES 
+  ('Fernanda Camacho', '2024-08-19'),
+  ('Aarón Diaz', '2020-07-29'); 
 
 CREATE TABLE prestamos (
   id_libro INTEGER NOT NULL, 
@@ -36,11 +31,11 @@ CREATE TABLE prestamos (
   REFERENCES miembros(id)
 );
 
-INSERT INTO prestamos VALUES (3, 1, '2025-08-10'); 
-
-INSERT INTO prestamos VALUES (1, 2, '2025-09-04'); 
-
-INSERT INTO prestamos VALUES (2, 1, '2025-08-20'); 
+INSERT INTO prestamos 
+  VALUES 
+  (3, 1, '2025-08-10'),
+  (1, 2, '2025-09-04'),
+  (2, 1, '2025-08-20');
 
 CREATE INDEX index_titulos ON libros(titulo);
 
