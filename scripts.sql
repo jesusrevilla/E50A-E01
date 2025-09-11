@@ -25,10 +25,11 @@ INSERT INTO libros VALUES (3, 'Jurassic Park', 'Ian Malcom', 1973);
 
 INSERT INTO miembros VALUES (1, 'Aldo Garcia', '2025-07-18');
 INSERT INTO miembros VALUES (2, 'Pedro Pascal', '2023-09-10');
+INSERT INTO miembros VALUES (3, 'Cristiano Ronaldo', '2023-02-22');
 
 INSERT INTO prestamos VALUES (3, 1, '2025-09-10');
 INSERT INTO prestamos VALUES (1, 2, '2025-07-9');
-INSERT INTO prestamos VALUES (2, 1, '2025-08-11');
+INSERT INTO prestamos VALUES (2, 3, '2025-08-11');
 
 CREATE INDEX ON libros(titulo);
 
