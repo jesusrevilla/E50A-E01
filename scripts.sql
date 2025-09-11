@@ -21,9 +21,9 @@ CREATE TABLE prestamos (
 
 CREATE INDEX indice ON libros (titulo);
 
-INSERT INTO libros (titulo, autor,año_publicacion)VALUES ('Cien Años de Soledad', 'AutorUno', '2004');
-INSERT INTO libros (titulo, autor,año_publicacion)VALUES ('LibroDos', 'AutorDos', '2005');
-INSERT INTO libros (titulo, autor,año_publicacion)VALUES ('LibroTres', 'AutorTres', '2006');
+INSERT INTO libros (titulo, autor,año_publicacion)VALUES ('Cien Años de Soledad', 'AutorUno', 2004);
+INSERT INTO libros (titulo, autor,año_publicacion)VALUES ('LibroDos', 'AutorDos', 2005);
+INSERT INTO libros (titulo, autor,año_publicacion)VALUES ('LibroTres', 'AutorTres', 2006);
 
 INSERT INTO miembros (nombre, fecha_registro)VALUES ('Diego', '2003-04-15');
 INSERT INTO miembros (nombre, fecha_registro)VALUES ('Leon', '2003-07-16');
