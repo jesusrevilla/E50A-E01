@@ -8,9 +8,7 @@ CREATE TABLE libros (
 );
 
 -- 2
-INSERT INTO libros(titulo, autor, anio_publicacion) VALUES ('Cien Años de Soledad', 'Gabriel García Márquez', 1967);
-INSERT INTO libros(titulo, autor, anio_publicacion) VALUES ('La Divina Comedia', 'Dante', 1000);
-INSERT INTO libros(titulo, autor, anio_publicacion) VALUES ('La Odisea', 'Homero', 100);
+INSERT INTO libros(titulo, autor, anio_publicacion) VALUES ('Cien Años de Soledad', 'Gabriel García Márquez', 1967), ('La Divina Comedia', 'Dante', 1000), ('La Odisea', 'Homero', 100);
 
 -- 3
 CREATE TABLE miembros (
