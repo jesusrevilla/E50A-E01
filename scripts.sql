@@ -26,9 +26,9 @@ INSERT INTO miembros (nombre, fecha_registro) VALUES
 ('Cecilia Castro','2025-08-09');
 
 CREATE TABLE prestamos (
-    id_libro INT,
+    id_libro INT NOT NULL,
     id_miembro INT,
-    fecha_prestamo  DATE,
+    fecha_prestamo  DATE NOT NULL,
     FOREIGN KEY (id_libro) REFERENCES libros(id),
     FOREIGN KEY (id_miembro) REFERENCES miembros(id)
 );
