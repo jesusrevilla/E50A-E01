@@ -58,9 +58,3 @@ FROM miembros m
 JOIN prestamos p ON m.id = p.id
 JOIN libros l ON p.id = l.id
 WHERE l.titulo = 'Cien Años de Soledad';
-
-SELECT m.nombre
-FROM miembros m
-JOIN prestamos p ON m.id= p.id
-JOIN libros l ON p.id = l.id
-WHERE l.titulo = 'Cien Años de Soledad';
