@@ -1,11 +1,8 @@
-
-
--- create
 CREATE TABLE libros (
   id SERIAL PRIMARY KEY,
   titulo VARCHAR(50) NOT NULL,
   autor VARCHAR(50) NOT NULL, 
-  anio_p INTEGER NOT NULL
+  año_publicidad INTEGER NOT NULL
 );
 
 CREATE TABLE miembros (
@@ -24,13 +21,13 @@ CREATE TABLE prestamos (
   REFERENCES miembros(id)
 );
 
-INSERT INTO libros (titulo, autor, anio_p) 
+INSERT INTO libros (titulo, autor, año_publicidad) 
 VALUES ('Cien Años de Soledad', 'Gabriel Marquez', 2000); 
 
-INSERT INTO libros (titulo, autor, anio_p)
+INSERT INTO libros (titulo, autor, año_publicidad)
 VALUES ('La Cenicienta', 'Disney', 1980); 
 
-INSERT INTO libros (titulo, autor, anio_p)
+INSERT INTO libros (titulo, autor, año_publicidad)
 VALUES ('La Bella Durmiente', 'Disney', 1988); 
 
 INSERT INTO miembros (nombre, fecha_registro) 
@@ -52,6 +49,11 @@ FROM miembros, prestamos, libros
 WHERE prestamos.id_miembro=miembros.id 
 AND prestamos.id_libro = libros.id; 
 
+SELECT miembros.nombre
+FROM miembros  
+JOIN prestamos  
+ON miembros.id = prestamos.id_miembro 
+WHERE prestamos.id_libro=1; 
 SELECT miembros.nombre
 FROM miembros  
 JOIN prestamos  
