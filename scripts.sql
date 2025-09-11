@@ -7,7 +7,7 @@ CREATE TABLE libros (
 );
 
 -- REGISTROS EN LIBROS
-INSERT INTO libros (Titulo, Autor, Año_publicacion)
+INSERT INTO libros (titulo, autor, año_publicacion)
 VALUES 
 ('Cien Años de Soledad', 'Gabriel García Márquez', 1967),
 ('Los Tiburones también tienen miedo', 'Adrian Moreno', 2018),
