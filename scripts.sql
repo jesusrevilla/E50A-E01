@@ -5,11 +5,26 @@ CREATE TABLE libros (
   año_publicidad INTEGER NOT NULL
 );
 
+INSERT INTO libros (titulo, autor, año_publicidad) 
+VALUES ('Cien Años de Soledad', 'Gabriel Marquez', 2000); 
+
+INSERT INTO libros (titulo, autor, año_publicidad)
+VALUES ('La Cenicienta', 'Disney', 1980); 
+
+INSERT INTO libros (titulo, autor, año_publicidad)
+VALUES ('La Bella Durmiente', 'Disney', 1988); 
+
 CREATE TABLE miembros (
   id SERIAL PRIMARY KEY,
   nombre VARCHAR(50) NOT NULL,
   fecha_registro DATE NOT NULL
 );
+
+INSERT INTO miembros (nombre, fecha_registro) 
+VALUES ('Fernanda Camacho', '2024-08-19'); 
+
+INSERT INTO miembros (nombre, fecha_registro)
+VALUES ('Aarón Diaz', '2020-07-29'); 
 
 CREATE TABLE prestamos (
   id_libro INTEGER NOT NULL, 
@@ -20,21 +35,6 @@ CREATE TABLE prestamos (
   FOREIGN KEY (id_miembro) 
   REFERENCES miembros(id)
 );
-
-INSERT INTO libros (titulo, autor, año_publicidad) 
-VALUES ('Cien Años de Soledad', 'Gabriel Marquez', 2000); 
-
-INSERT INTO libros (titulo, autor, año_publicidad)
-VALUES ('La Cenicienta', 'Disney', 1980); 
-
-INSERT INTO libros (titulo, autor, año_publicidad)
-VALUES ('La Bella Durmiente', 'Disney', 1988); 
-
-INSERT INTO miembros (nombre, fecha_registro) 
-VALUES ('Fernanda Camacho', '2024-08-19'); 
-
-INSERT INTO miembros (nombre, fecha_registro)
-VALUES ('Aarón Diaz', '2020-07-29'); 
 
 INSERT INTO prestamos VALUES (3, 1, '2025-08-10'); 
 
