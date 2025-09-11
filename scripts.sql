@@ -18,8 +18,7 @@ CREATE TABLE miembros (
 );
 
 -- 4
-INSERT INTO miembros(nombre, fecha_registro) VALUES ('Angel', '09-09-2025');
-INSERT INTO miembros(nombre, fecha_registro) VALUES ('David', '08-08-2025');
+INSERT INTO miembros(nombre, fecha_registro) VALUES ('Angel', '09-09-2025'), ('David', '08-08-2025');
 
 -- 5
 CREATE TABLE prestamos (
@@ -31,9 +30,7 @@ CREATE TABLE prestamos (
 );
 
 -- 6
-INSERT INTO prestamos VALUES (1, 1, '10-09-2025');
-INSERT INTO prestamos VALUES (2, 1, '11-09-2025');
-INSERT INTO prestamos VALUES (3, 2, '12-09-2025');
+INSERT INTO prestamos VALUES (1, 1, '10-09-2025'), (2, 1, '11-09-2025'), (3, 2, '12-09-2025');
 
 -- 7
 CREATE INDEX idx_titulo ON libros(titulo);
