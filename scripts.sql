@@ -1,7 +1,7 @@
 --EXAMEN P1
 --1
 CREATE TABLE libros (
-    id_libros SERIAL PRIMARY KEY,
+    id SERIAL PRIMARY KEY,
     titulo VARCHAR NOT NULL,
     autor VARCHAR NOT NULL,
     año_publicacion INTEGER NOT NULL
@@ -14,7 +14,7 @@ INSERT INTO libros (titulo, autor, año_publicacion) VALUES
 
 --3
 CREATE TABLE miembros (
-  id_miembros SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   nombre VARCHAR NOT NULL,
   fecha_registro DATE NOT NULL
 );
@@ -29,8 +29,8 @@ CREATE TABLE prestamos (
     id_libro INT NOT NULL,
     id_miembro INT NOT NULL,
     fecha_prestamo DATE NOT NULL,
-    FOREIGN KEY (id_libro) REFERENCES libros(id_libros),
-    FOREIGN KEY (id_miembro) REFERENCES miembros(id_miembros)
+    FOREIGN KEY (id_libro) REFERENCES libros(id),
+    FOREIGN KEY (id_miembro) REFERENCES miembros(id)
 );
 
 --6
@@ -47,12 +47,12 @@ CREATE INDEX idx_titulo ON libros(titulo);
 --8
 SELECT l.titulo, m.nombre
 FROM prestamos p
-JOIN libros l ON p.id_libro = l.id_libros
-JOIN miembros m ON p.id_miembro = m.id_miembros;
+JOIN libros l ON p.id_libro = l.id
+JOIN miembros m ON p.id_miembro = m.id;
 
 --9
 SELECT m.nombre
 FROM prestamos p
-JOIN libros l ON p.id_libro = l.id_libros
-JOIN miembros m ON p.id_miembro = m.id_miembros
+JOIN libros l ON p.id_libro = l.id
+JOIN miembros m ON p.id_miembro = m.id
 WHERE l.titulo = 'Cien Años de Soledad';
