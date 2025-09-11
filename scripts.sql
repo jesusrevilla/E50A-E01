@@ -1,4 +1,4 @@
-CREATE TABLE libros(
+ CREATE TABLE libros(
   id SERIAL PRIMARY KEY,
   titulo TEXT NOT NULL,
   autor TEXT NOT NULL,
