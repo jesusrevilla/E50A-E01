@@ -5,9 +5,9 @@ CREATE TABLE libros(
   año_publicacion INTEGER NOT NULL
 );
 
-INSERT INTO libros VALUES (0001, 'Cien Años de Soledad', 'Gabriel García Márquez', '1967');
-INSERT INTO libros VALUES (0002, 'El Señor de Los Domingos', 'Miguel Angel Gaitan', '2013');
-INSERT INTO libros VALUES (0003, 'Mi Vecino Totoro', 'Ghibi', '1993');
+INSERT INTO libros(titulo, autor, año_publicacion) VALUES ('Cien Años de Soledad', 'Gabriel García Márquez', '1967');
+INSERT INTO libros(titulo, autor, año_publicacion) VALUES ('El Señor de Los Domingos', 'Miguel Angel Gaitan', '2013');
+INSERT INTO libros(titulo, autor, año_publicacion) VALUES ('Mi Vecino Totoro', 'Ghibi', '1993');
 
 CREATE TABLE miembros (
   id SERIAL PRIMARY KEY,
@@ -15,8 +15,8 @@ CREATE TABLE miembros (
   fecha_registro DATE NOT NULL
 );
 
-INSERT INTO miembros VALUES (0001, 'Rafael', '2025-09-10');
-INSERT INTO miembros VALUES (0002, 'Gabriel', '2025-09-10');
+INSERT INTO miembros(nombre, fecha_registro) VALUES ('Rafael', '2025-09-10');
+INSERT INTO miembros(nombre, fecha_registro) VALUES ('Gabriel', '2025-09-10');
 
 CREATE TABLE prestamos(
   id_libro SERIAL,
