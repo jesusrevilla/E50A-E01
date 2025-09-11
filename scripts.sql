@@ -1,5 +1,5 @@
 CREATE TABLE libros (
-  id_libro SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   titulo varchar(50) NOT NULL,
   autor varchar(50) NOT NULL,
   año_publicacion INTEGER NOT NULL
@@ -12,7 +12,7 @@ INSERT INTO libros (titulo, autor,año_publicacion)VALUES
 
 
 CREATE TABLE miembros (
-  id_miembro SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   nombre varchar(50) NOT NULL,
   fecha_registro DATE NOT NULL
 );
@@ -24,8 +24,8 @@ INSERT INTO miembros (nombre, fecha_registro) VALUES
 CREATE TABLE prestamos (
   id_libro int,
   id_miembro int,
-  FOREIGN KEY (id_libro) references libros(id_libro),
-  FOREIGN KEY (id_miembro) references miembros(id_miembro),
+  FOREIGN KEY (id_libro) references libros(id),
+  FOREIGN KEY (id_miembro) references miembros(id),
   fecha_prestamo DATE
 );
 
@@ -36,13 +36,13 @@ INSERT INTO prestamos (id_libro, id_miembro, fecha_prestamo) VALUES
 
 CREATE INDEX indice ON libros (titulo);
 
-SELECT libros.titulo, miembros.nombre
-FROM prestamos
-JOIN libros ON prestamos.id_libro = libros.id_libro
-JOIN miembros ON prestamos.id_miembro = miembros.id_miembro;
+SELECT l.titulo, m.nombre
+FROM libros l
+JOIN prestamos p ON l.id = p.id_libro
+JOIN miembros m ON p.id_miembro = m.id;
 
-SELECT miembros.nombre
-FROM prestamos
-JOIN libros ON prestamos.id_libro = libros.id_libro
-JOIN miembros ON prestamos.id_miembro = miembros.id_miembro
-WHERE libros.titulo = 'Cien Años de Soledad';
+SELECT m.nombre
+FROM miembros m
+JOIN prestamos p ON m.id = p.id_miembro
+JOIN libros l ON p.id_libro = l.id
+WHERE l.titulo = 'Cien Años de Soledad';
