@@ -5,9 +5,9 @@ CREATE TABLE libros (
     año_publicacion INTEGER NOT NULL
 );
 
-INSERT INTO libros(titulo, autor, año_publicacion) VALUES ('Cien Años de Soledad', 'Gabriel García Márquez', 1967);
-INSERT INTO libros(titulo, autor, año_publicacion) VALUES ('El Señor de Los Domingos', 'Miguel Angel Gaitan', 2013);
-INSERT INTO libros(titulo, autor, año_publicacion) VALUES ('Mi Vecino Totoro', 'Ghibi', 1993);
+INSERT INTO libros(titulo, autor, año_publicacion) VALUES ('Cien Años de Soledad', 'Gabriel García Márquez', 1967),
+('El Señor de Los Domingos', 'Miguel Angel Gaitan', 2013),
+('Mi Vecino Totoro', 'Ghibi', 1993);
 
 CREATE TABLE miembros (
   id SERIAL PRIMARY KEY,
@@ -29,9 +29,9 @@ CREATE TABLE prestamos (
 );
 
 
-INSERT INTO prestamos (id_libro, id_miembro, fecha_prestamo) VALUES (1, 1, '2025-04-04');
-INSERT INTO prestamos (id_libro, id_miembro, fecha_prestamo) VALUES (2, 2, '2025-04-04');
-INSERT INTO prestamos (id_libro, id_miembro, fecha_prestamo) VALUES (3, 2, '2025-04-04');
+INSERT INTO prestamos (id_libro, id_miembro, fecha_prestamo) VALUES (1, 1, '2025-04-04'),
+(2, 2, '2025-04-04'),
+(3, 2, '2025-04-04');
 
 CREATE INDEX idx_titulo ON libros(titulo);
 
