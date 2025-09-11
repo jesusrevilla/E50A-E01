@@ -26,7 +26,7 @@ INSERT INTO miembros (nombre,fecha_registro) VALUES
 ('salma lopez', '2025-02-18');
 
 -- 5
-CREATE TABLE prestamo (
+CREATE TABLE prestamos (
   -- id_prestamo SERIAL PRIMARY KEY,
   id_l INTEGER NOT NULL,
   id_m INTEGER NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE prestamo (
 );
 
 -- 7
-INSERT INTO prestamo (id_l, id_m, fecha_prestamo) VALUES
+INSERT INTO prestamos (id_l, id_m, fecha_prestamo) VALUES
 (1, 1, '2025-08-20'),
 (2, 2, '2025-08-15'),
 (1, 1, '2025-08-10');
@@ -55,6 +55,6 @@ ON m.id_m = l.id_l;
 -- 9 
 SELECT DISTINCT m.nombre
 FROM miembros m
-JOIN prestamo p ON m.id_m = p.id_m
+JOIN prestamos p ON m.id_m = p.id_m
 JOIN libros l ON p.id_l = l.id_l
 WHERE l.titulo = 'Cien Años de Soledad';
