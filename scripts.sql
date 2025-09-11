@@ -1,5 +1,5 @@
 CREATE TABLE libros(
-  id_libro SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   titulo TEXT NOT NULL,
   autor TEXT NOT NULL,
   anio_publicacion INT NOT NULL
@@ -7,7 +7,7 @@ CREATE TABLE libros(
 
 
 CREATE TABLE miembros(
-  id_miembros SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   nombre varchar(50) NOT NULL,
   fecha_registro DATE NOT NULL
 );
