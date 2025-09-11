@@ -32,7 +32,7 @@
 
 7. Cree un índice en el campo título de la tabla `libros`.
 
-## Sección 4: Consultas Avanzadas
+## Sección 3: Consultas Avanzadas
 
 Nota: cada consulta debe arrojar por lo menos un renglón
 
