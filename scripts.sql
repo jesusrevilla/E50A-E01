@@ -1,7 +1,7 @@
 -- SECCION 1: Creación y Manipulación de Tablas
 -- 1
 CREATE TABLE libros (
-  id_l SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   titulo VARCHAR(100),
   autor VARCHAR(100),
   anio_publicacion INTEGER NOT NULL
@@ -15,7 +15,7 @@ INSERT INTO libros (titulo, autor, anio_publicacion) VALUES
 
 -- 3 
 CREATE TABLE miembros (
-  id_m SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   nombre VARCHAR(100),
   fecha_registro DATE
 );
@@ -27,12 +27,12 @@ INSERT INTO miembros (nombre,fecha_registro) VALUES
 
 -- 5
 CREATE TABLE prestamos (
-  -- id_prestamo SERIAL PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   id_l INTEGER NOT NULL,
   id_m INTEGER NOT NULL,
   fecha_prestamo DATE NOT NULL,
-  FOREIGN KEY (id_m) REFERENCES miembros(id_m),
-  FOREIGN KEY (id_l) REFERENCES libros(id_l)
+  FOREIGN KEY (id_m) REFERENCES miembros(id),
+  FOREIGN KEY (id_l) REFERENCES libros(id)
 );
 
 -- 7
@@ -50,11 +50,17 @@ CREATE INDEX idx_autor ON libros(titulo);
 SELECT m.nombre, l.titulo 
 FROM miembros m 
 JOIN libros l 
-ON m.id_m = l.id_l;
+ON m.id = l.id;
 
 -- 9 
 SELECT DISTINCT m.nombre
 FROM miembros m
-JOIN prestamos p ON m.id_m = p.id_m
-JOIN libros l ON p.id_l = l.id_l
+JOIN prestamos p ON m.id = p.id
+JOIN libros l ON p.id = l.id
+WHERE l.titulo = 'Cien Años de Soledad';
+
+SELECT m.nombre
+FROM miembros m
+JOIN prestamos p ON m.id= p.id
+JOIN libros l ON p.id = l.id
 WHERE l.titulo = 'Cien Años de Soledad';
