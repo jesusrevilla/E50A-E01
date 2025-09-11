@@ -19,7 +19,7 @@
 
 5. Cree una tabla llamada `prestamos` para relacionar `libros` y `miembros`,   
    con los campos:   
-   id_libro (entero, clave foránea),   
+   id (entero, clave foránea),   
    id_miembro (entero, clave foránea),   
    fecha_prestamo (fecha). (1 punto)
 
