@@ -18,7 +18,7 @@ def test_tables_exist(db_connection):
     for table in ['libros', 'miembros', 'prestamos']:
         cursor.execute(f"SELECT to_regclass('{table}');")
         result = cursor.fetchone()
-        assert result[0] == table
+        assert result[0] is not None, f"La tabla {table} no existe"
 
 def test_libros_data(db_connection):
     cursor = db_connection.cursor()
@@ -36,23 +36,23 @@ def test_prestamos_relations(db_connection):
     cursor = db_connection.cursor()
     cursor.execute("""
         SELECT COUNT(*) FROM prestamos
-        WHERE id_libro IN (SELECT id FROM libros)
-        AND id_miembro IN (SELECT id FROM miembros);
+        WHERE id_libro IN (SELECT id_libro FROM libros)
+        AND id_miembro IN (SELECT id_miembro FROM miembros);
     """)
     count = cursor.fetchone()[0]
     assert count == 3
 
 def test_id_fields_are_serial(db_connection):
     cursor = db_connection.cursor()
-    for table in ['libros', 'miembros']:
+    ids = {"libros": "id_libro", "miembros": "id_miembro", "prestamos": "id_prestamo"}
+    for table, col in ids.items():
         cursor.execute(f"""
             SELECT column_default
             FROM information_schema.columns
-            WHERE table_name = '{table}' AND column_name = 'id';
+            WHERE table_name = '{table}' AND column_name = '{col}';
         """)
         default = cursor.fetchone()[0]
-        assert default is not None and 'nextval' in default, f"Campo 'id' en tabla '{table}' no es tipo serial"
-
+        assert default is not None and 'nextval' in default, f"Campo '{col}' en tabla '{table}' no es tipo serial"
 
 def test_at_least_one_not_null_column(db_connection):
     cursor = db_connection.cursor()
@@ -63,4 +63,3 @@ def test_at_least_one_not_null_column(db_connection):
         """)
         count = cursor.fetchone()[0]
         assert count >= 1, f"La tabla '{table}' no tiene ninguna columna NOT NULL"
-
