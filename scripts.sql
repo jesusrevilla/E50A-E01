@@ -1,8 +1,8 @@
-CREATE TABLE libros(
-  id SERIAL PRIMARY KEY,
-  titulo VARCHAR(80) NOT NULL,
-  autor VARCHAR(50) NOT NULL,
-  año_publicacion INTEGER NOT NULL
+CREATE TABLE libros (
+    id SERIAL PRIMARY KEY,
+    titulo VARCHAR NOT NULL,
+    autor VARCHAR NOT NULL,
+    año_publicacion INTEGER NOT NULL
 );
 
 INSERT INTO libros(titulo, autor, año_publicacion) VALUES ('Cien Años de Soledad', 'Gabriel García Márquez', 1967);
@@ -11,26 +11,32 @@ INSERT INTO libros(titulo, autor, año_publicacion) VALUES ('Mi Vecino Totoro', 
 
 CREATE TABLE miembros (
   id SERIAL PRIMARY KEY,
-  nombre VARCHAR(50) NOT NULL,
+  nombre VARCHAR NOT NULL,
   fecha_registro DATE NOT NULL
 );
 
-INSERT INTO miembros(nombre, fecha_registro) VALUES ('Rafael', '2025-09-10');
-INSERT INTO miembros(nombre, fecha_registro) VALUES ('Gabriel', '2025-09-10');
+INSERT INTO miembros (nombre, fecha_registro) VALUES
+    ('Rafael', '2024-05-03'),
+    ('Juan', '2024-10-19');
+    
 
-CREATE TABLE prestamos(
-  id_libro SERIAL,
-  id_miembro SERIAL,
-  fecha_prestamo DATE NOT NULL,
-  FOREIGN KEY (id_libro) REFERENCES libros(id),
-  FOREIGN KEY (id_miembro) REFERENCES miembros(id)
+CREATE TABLE prestamos (
+    id_libro INT NOT NULL,
+    id_miembro INT NOT NULL,
+    fecha_prestamo DATE NOT NULL,
+    FOREIGN KEY (id_libro) REFERENCES libros(id),
+    FOREIGN KEY (id_miembro) REFERENCES miembros(id)
 );
 
-INSERT INTO prestamos VALUES (1, 1, '2025-09-10');
-INSERT INTO prestamos VALUES (2, 1, '2025-09-10');
-INSERT INTO prestamos VALUES (3, 2, '2025-09-10');
 
-CREATE INDEX index_titulo ON libros(titulo);
+INSERT INTO prestamos (id_libro, id_miembro, fecha_prestamo)
+VALUES
+(1, 1, '2025-04-04'),  
+(2, 2, '2025-03-25'), 
+(3, 1, '2025-12-29'); 
+
+
+CREATE INDEX idx_titulo ON libros(titulo);
 
 SELECT l.titulo, m.nombre
 FROM prestamos p
