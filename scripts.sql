@@ -5,9 +5,9 @@ CREATE TABLE libros(
   año_publicacion INTEGER NOT NULL
 );
 
-INSERT INTO libros(titulo, autor, año_publicacion) VALUES ('Cien Años de Soledad', 'Gabriel García Márquez', '1967');
-INSERT INTO libros(titulo, autor, año_publicacion) VALUES ('El Señor de Los Domingos', 'Miguel Angel Gaitan', '2013');
-INSERT INTO libros(titulo, autor, año_publicacion) VALUES ('Mi Vecino Totoro', 'Ghibi', '1993');
+INSERT INTO libros(titulo, autor, año_publicacion) VALUES ('Cien Años de Soledad', 'Gabriel García Márquez', 1967);
+INSERT INTO libros(titulo, autor, año_publicacion) VALUES ('El Señor de Los Domingos', 'Miguel Angel Gaitan', 2013);
+INSERT INTO libros(titulo, autor, año_publicacion) VALUES ('Mi Vecino Totoro', 'Ghibi', 1993);
 
 CREATE TABLE miembros (
   id SERIAL PRIMARY KEY,
