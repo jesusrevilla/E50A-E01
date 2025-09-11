@@ -1,23 +1,23 @@
 CREATE TABLE libros (
-  libro_id SERIAL PRIMARY KEY,
+  id_libro SERIAL PRIMARY KEY,
   titulo TEXT NOT NULL,
   autor TEXT NOT NULL,
   anio_publicacion INT NOT NULL
 );
 
 CREATE TABLE miembros(
-  miembro_id SERIAL PRIMARY KEY,
+  id_miembro SERIAL PRIMARY KEY,
   nombre TEXT NOT NULL,
   fecha_registro DATE NOT NULL
 );
 
 CREATE TABLE prestamos(
-  prestamo_id SERIAL PRIMARY KEY,
-  libro_id INT NOT NULL,
-  miembro_id INT NOT NULL,
+  id_prestamo SERIAL PRIMARY KEY,
+  id_libro INT NOT NULL,
+  id_miembro INT NOT NULL,
   fecha_prestamo DATE NOT NULL,
-  FOREIGN KEY (libro_id) REFERENCES libros(libro_id),
-  FOREIGN KEY (miembro_id) REFERENCES miembros(miembro_id)
+  FOREIGN KEY (id_libro) REFERENCES libros(id_libro),
+  FOREIGN KEY (id_miembro) REFERENCES miembros(id_miembro)
 );
 
 INSERT INTO libros (titulo, autor, anio_publicacion)
@@ -32,7 +32,7 @@ VALUES
 ('Daniel Emanuel Sánchez López', '2025-10-09'),
 ('Patricia Michelle Martínez Huerta', '2025-10-09');
 
-INSERT INTO prestamos (libro_id, miembro_id, fecha_prestamo)
+INSERT INTO prestamos (id_libro, id_miembro, fecha_prestamo)
 VALUES 
 (1, 1, '2025-09-10'),
 (2, 2, '2025-09-10'),
@@ -42,12 +42,11 @@ CREATE INDEX libros_titulo ON libros(titulo);
 
 SELECT l.titulo, m.nombre
 FROM prestamos p
-JOIN libros l ON p.libro_id = l.libro_id
-JOIN miembros m ON p.miembro_id = m.miembro_id;
+JOIN libros l ON p.id_libro = l.id_libro
+JOIN miembros m ON p.id_miembro = m.id_miembro;
 
 SELECT m.nombre
 FROM prestamos p
-JOIN libros l ON p.libro_id = l.libro_id
-JOIN miembros m ON p.miembro_id = m.miembro_id
+JOIN libros l ON p.id_libro = l.id_libro
+JOIN miembros m ON p.id_miembro = m.id_miembro
 WHERE l.titulo = 'Cien Años de Soledad';
-
