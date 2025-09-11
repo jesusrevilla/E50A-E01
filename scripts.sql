@@ -17,8 +17,8 @@ CREATE TABLE miembros (
 );
 
 INSERT INTO miembros (nombre, fecha_registro) VALUES
-('Ana López', '2025-01-15'),
-('Juan Pérez', '2025-02-20');
+('Cristopher García Torres', '2025-09-10'),
+('Vanessa Mata', '2025-06-20');
 
 -- Crear tabla prestamos
 CREATE TABLE prestamos (
