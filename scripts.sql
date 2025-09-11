@@ -12,13 +12,10 @@ CREATE TABLE libros (
 
 -- insert 3
 INSERT INTO libros(titulo, autor, año_publicación)
-VALUES ('Cien Años de Soledad', 'Gabriel Garcia', 1990);
-
-INSERT INTO libros(titulo, autor, año_publicación)
-VALUES ('La divina comedia', 'Dante', 1500);
-
-INSERT INTO libros(titulo, autor, año_publicación)
-VALUES ('Orgullo y Prejuicio', 'Jane Austen', 1815);
+VALUES 
+('Cien Años de Soledad', 'Gabriel Garcia', 1990),
+('La divina comedia', 'Dante', 1500),
+('Orgullo y Prejuicio', 'Jane Austen', 1815);
 
 -- create miembros
 CREATE TABLE miembros (
@@ -29,10 +26,9 @@ CREATE TABLE miembros (
 
 -- insert 2
 INSERT INTO miembros(nombre, fecha_registro)
-VALUES ('Yazmin Guerrero', '20205-09-10');
-
-INSERT INTO miembros(nombre, fecha_registro)
-VALUES ('Luna Hernández', '20205-09-09');
+VALUES 
+('Yazmin Guerrero', '20205-09-10'),
+('Luna Hernández', '20205-09-09');
 
 -- create prestamos
 CREATE TABLE prestamos (
