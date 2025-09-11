@@ -26,9 +26,9 @@ CREATE TABLE prestamos(
   FOREIGN KEY (id_miembro) REFERENCES miembros(id)
 );
 
-INSERT INTO prestamos VALUES (0001, 0001, '2025-09-10');
-INSERT INTO prestamos VALUES (0002, 0001, '2025-09-10');
-INSERT INTO prestamos VALUES (0003, 0002, '2025-09-10');
+INSERT INTO prestamos VALUES (1, 1, '2025-09-10');
+INSERT INTO prestamos VALUES (2, 1, '2025-09-10');
+INSERT INTO prestamos VALUES (3, 2, '2025-09-10');
 
 CREATE INDEX index_titulo ON libros(titulo);
 
