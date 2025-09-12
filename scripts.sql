@@ -28,15 +28,15 @@ INSERT INTO miembros (nombre,fecha_registro) VALUES
 -- 5
 CREATE TABLE prestamos (
   id SERIAL PRIMARY KEY,
-  id_l INTEGER NOT NULL,
-  id_m INTEGER NOT NULL,
+  id_libro INTEGER NOT NULL,
+  id_miembro INTEGER NOT NULL,
   fecha_prestamo DATE NOT NULL,
-  FOREIGN KEY (id_m) REFERENCES miembros(id),
-  FOREIGN KEY (id_l) REFERENCES libros(id)
+  FOREIGN KEY (id_miembro) REFERENCES miembros(id),
+  FOREIGN KEY (id_libro) REFERENCES libros(id)
 );
 
 -- 7
-INSERT INTO prestamos (id_l, id_m, fecha_prestamo) VALUES
+INSERT INTO prestamos (id_libro, id_miembro, fecha_prestamo) VALUES
 (1, 1, '2025-08-20'),
 (2, 2, '2025-08-15'),
 (1, 1, '2025-08-10');
