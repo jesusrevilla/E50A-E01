@@ -1,1 +1,57 @@
+-- 1) Tabla: libros
+CREATE TABLE libros (
+  id               SERIAL PRIMARY KEY,
+  titulo           VARCHAR(200) NOT NULL,
+  autor            VARCHAR(150) NOT NULL,
+  año_publicacion INTEGER      NOT NULL CHECK (año_publicacion > 0)
+);
+
+-- Insertar 3 libros 
+INSERT INTO libros (titulo, autor, año_publicacion) VALUES
+('Cien Años de Soledad', 'Gabriel García Márquez', 1967),
+('Nada es para siempre',             'Jorge Luis Borges',       1949),
+('El Final',         'Juan Rulfo',              1955);
+
+-- 2) Tabla: miembros
+CREATE TABLE miembros (
+  id              SERIAL PRIMARY KEY,
+  nombre          VARCHAR(150) NOT NULL,
+  fecha_registro  DATE         NOT NULL DEFAULT CURRENT_DATE
+);
+
+-- Insertar 2 miembros
+INSERT INTO miembros (nombre, fecha_registro) VALUES
+('Javier Cruz',  '2025-09-01'),
+('Gisela Moreno', '2025-09-02');
+
+-- 3) Tabla: prestamos 
+CREATE TABLE prestamos (
+  id_libro       INTEGER NOT NULL REFERENCES libros(id)   ON UPDATE CASCADE ON DELETE RESTRICT,
+  id_miembro     INTEGER NOT NULL REFERENCES miembros(id) ON UPDATE CASCADE ON DELETE RESTRICT,
+  fecha_prestamo DATE    NOT NULL,
+  UNIQUE (id_libro, id_miembro, fecha_prestamo)
+);
+
+-- Insertar 3 préstamos
+INSERT INTO prestamos (id_libro, id_miembro, fecha_prestamo) VALUES
+(1, 1, '2025-09-03'),  
+(2, 1, '2025-09-04'),  
+(1, 2, '2025-09-05'); 
+
+
+CREATE INDEX idx_libros_titulo ON libros (titulo);
+
+SELECT
+  l.titulo,
+  m.nombre
+FROM prestamos p
+JOIN libros   l ON p.id_libro   = l.id
+JOIN miembros m ON p.id_miembro = m.id;
+
+SELECT
+  m.nombre
+FROM prestamos p
+JOIN libros   l ON p.id_libro   = l.id
+JOIN miembros m ON p.id_miembro = m.id
+WHERE l.titulo = 'Cien Años de Soledad';
 
